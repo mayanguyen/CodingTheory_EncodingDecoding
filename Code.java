@@ -1,8 +1,7 @@
 /*
- * Van Mai Nguyen Thi
- * Coding Theory: Final Project
+ * Van Mai Nguyen Thi <maya.nguyenthi@gmail.com>
  *
- * Task: Write a computer program to encode and decode data using a user-supplied
+ * Coding Theory: Program to encode and decode data using a user-supplied
  *       generator or parity check matrix.
  */
 

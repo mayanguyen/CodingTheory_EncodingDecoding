@@ -1,9 +1,7 @@
 /*
- * Van Mai Nguyen Thi
- * Coding Theory: Final Project
- *
- * Test Program for CODE
- *
+ * Van Mai Nguyen Thi <maya.nguyenthi@gmail.com>
+ * 
+ * Coding Theory: Test Program
  */
 
 // import java.util.Scanner;
@@ -56,12 +54,7 @@ class CTest {
         s = c.decode(x2);
         System.out.println("\nDecoded x2 = "+s.k+"x"+s.n+" vector:");
         s.show();
-        
-        //System.out.println(table);
-        
-        //Scanner input = new Scanner(System.input);
     }
-    
     
 }
 

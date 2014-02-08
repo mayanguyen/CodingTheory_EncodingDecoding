@@ -1,16 +1,9 @@
 /*
- * Van Mai Nguyen Thi
- * Coding Theory: Final Project
- *
- * Task: Write a computer program to encode and decode data using a user-supplied
+ * Van Mai Nguyen Thi <maya.nguyenthi@gmail.com>
+ * 
+ * Coding Theory
+ * Program to encode and decode data using a user-supplied
  *       generator or parity check matrix.
- *
- * November 20: One-page outline due, describing what will be in your paper and
- *              presentation.
- * December 11: Rough draft of your paper due.
- * December 18: Final draft of your paper due.
- * December 18, 20: Presentations in class.
- *
  */
 
 public class Matrix {
