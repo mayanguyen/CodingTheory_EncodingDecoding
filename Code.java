@@ -8,9 +8,6 @@
 import java.util.*;
 
 public class Code {
-    
-    /***** ATTRIBUTES ***********************************************/
-    
     // k = dimension; height of generator matrix
     // n = width (length of codewords)
     // w = minimum weight/distance
@@ -24,8 +21,6 @@ public class Code {
     public static Hashtable<Integer, Matrix> table;
     public static int hashList[];
     
-    
-    /***** CONSTRUCTORS **********************************************/
     public Code() {
         k = 0;
         n = 0;
@@ -44,10 +39,7 @@ public class Code {
         makeTable();
     }
     
-    /***** METHODS ***********************************************/
-    
-    ///////// GET METHODS
-    
+    /*** GET METHODS ***/
     // get dimension k of this code
     public int getDimension() {
         return k;
@@ -86,8 +78,7 @@ public class Code {
         }
     }*/
     
-    ///////// SET METHODS
-    
+    /*** SET METHODS ***/
     public void setG(Matrix gen) {
         g = gen;
         n = g.n;
@@ -113,7 +104,7 @@ public class Code {
         h.show();
     }
     
-    ///////// COMPUTATIONS
+    /*** COMPUTATIONS ***/
     
     // return encoded message (as a vector, i.e. 1xn matrix)
     // message length is k
@@ -122,7 +113,6 @@ public class Code {
             throw new Error("Message must be a vector.");
         if (message.n != k)
             throw new Error("Length of message must be the same as height of the generator matrix.");
-        
         Matrix result;
         result = message.times(g);
         return result;
@@ -162,7 +152,6 @@ public class Code {
             throw new Error("Syndrome can only be computed from a vector.");
         if (x.n != n)
             throw new Error("Length of codeword must be the same as width of parity check matrix.");
-        
         Matrix result = h.times(x.transpose());
         return result;
     }
@@ -175,7 +164,6 @@ public class Code {
             else endStr = endStr + "0";
         }
         int end = Integer.parseInt(endStr,2);
-        
         Matrix coset = new Matrix(n); // zero coset; first coset in table
         makeTable(coset, end, 0);
     }
@@ -185,16 +173,13 @@ public class Code {
     // coset to be inserted to the table at hash row corresponding to syndrome
     public void makeTable(Matrix coset, int end, int hashListIndex) {
         Matrix syndrome;
-        
         if (coset.weight() <= t) { // checking just in case
             syndrome = cosetToSyn(coset);
             int hash = matrixToInt(syndrome.transpose());
             table.put(hash, coset);
             hashList[hashListIndex] = hash;
         }
-        
         int decimal = matrixToInt(coset); // decimal corresponding to recent coset
-        
         // if not the end, search for next coset
         if (decimal != end) {
             do {
@@ -206,14 +191,12 @@ public class Code {
         }
     }
     
-    
     // takes valid coset leader
     // return corresponding syndrome
     // height of syndrome is n-k
     public Matrix cosetToSyn(Matrix coset) {
         Matrix syndrome = new Matrix(n-k);
         syndrome = syndrome.transpose(); // vertical zero vector height n-k
-        
         // if i-th term of coset is 1, then add i-th column of H to syndrome
         for (int i=0; i<coset.n; i++) {
             if (coset.getEntry(0,i) == 1) {
@@ -221,7 +204,6 @@ public class Code {
                 syndrome = syndrome.plus(temp);
             }
         }
-        
         return syndrome;
     }
     
@@ -241,7 +223,6 @@ public class Code {
     // and putting each digit of binary number into matrix
     public Matrix intToMatrix(int decimal) {
         Matrix coset = new Matrix(1,n); //this is used to create cosets => len. = n
-        
         // put digits of binary number into matrix
         for (int i=n-1; i>=0; i--) {
             if (decimal>0) { // put bin digits in matrix starting from last digit
@@ -251,10 +232,6 @@ public class Code {
             else // put 0 if binary number shorter than coset length
                 coset.setEntry(0,i,0);
         }
-        
         return coset;
     }
-    
 }
-
-
