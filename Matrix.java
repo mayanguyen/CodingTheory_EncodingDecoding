@@ -7,18 +7,10 @@
  */
 
 public class Matrix {
-    
-/***** ATTRIBUTES ***********************************************/
-    
     public int k, n; // k = height (# of rows); n = width (# of columns; length of codewords)
     public static final int FIELD = 2; // which means F_2
     public int matrix[][];
     
-    
-    
-/***** CONSTRUCTORS ***********************************************/
-    
-    // default constructor: creates empty matrix
     public Matrix() {
         k = 0;
         n = 0;
@@ -73,11 +65,6 @@ public class Matrix {
         for (int i=0; i<n; i++)
             matrix[0][i] = 0;
     }
-    
-/***** METHODS ***********************************************/
-    
-    
-    /******************** basic ***************************/
     
     public int getHeight() {
         return k;
@@ -157,7 +144,6 @@ public class Matrix {
         this.matrix[row][column] = entry % FIELD;
     }
     
-    
     // substitute this matrix with "other"; overwrites all entries of this matrix
     public void copy(Matrix other) {
         this.k = other.getHeight();
@@ -195,10 +181,8 @@ public class Matrix {
             array[i] = 2*k; // k would be enough, but 2k just in case
         
         Matrix sum = this.getRow(0);
-        
         int minW = rowWeight(0);
         minW = this.minWeight(array,sum,minW);
-        
         return minW;
     }
     
@@ -242,9 +226,7 @@ public class Matrix {
     
     
     
-    /******************** computations ***************************/
-    
-    
+    /******************** Computations ***************************/
     // return new matrix = sum of this and other; NO change to this or other
     // notice that minus and plus are the same in F_2
     // e.g. m1 = m1.plus(m2);
@@ -278,13 +260,9 @@ public class Matrix {
                 }
             }
         }
-        
         Matrix result = new Matrix(this.k, other.n, entries);
-        
         return result;
     }
-    
-    
     
     // return the transposed matrix (as a new matrix); NO change to this matrix
     public Matrix transpose() {
@@ -296,12 +274,9 @@ public class Matrix {
                 entries[i][j] = this.getEntry(j,i);
             }
         }
-        
         Matrix result = new Matrix(newK, newN, entries);
-        
         return result;
     }
-    
     
     // INCOMPLETE
     // return true if this matrix is linearly independent
@@ -316,7 +291,6 @@ public class Matrix {
                 // do sth
             }
         }
-        
         Matrix result = new Matrix();
         return result;
     }
@@ -331,7 +305,6 @@ public class Matrix {
     public void swapRows(int r1, int r2) {
         if (r1 >= k || r2 >= k)
             throw new Error("Could not find requested rows.");
-        
         if (r1==r2) return;
         
         int temp;
@@ -357,7 +330,6 @@ public class Matrix {
         }
     }
     
-    
     // n times each entry in matrix[row]
     // ZERO BASE!!!!!
     // changes this matrix
@@ -375,6 +347,4 @@ public class Matrix {
             matrix[r1][i] = (matrix[r1][i] + matrix[r2][i]) % FIELD;
         }
     }
-    
 }
-
