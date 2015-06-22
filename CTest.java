@@ -25,8 +25,7 @@ class CTest {
         // x2 = (received) code of length n
         Matrix x2 = new Matrix( 1, 8, new int[] {0,1,1,0,1,1,1,0} );
         
-        
-        // make CODE
+        // make the CODE
         Code c = new Code(g,h);
         c.show(); // print info about this code
         c.makeTable(); // make the syndrome-coset leader table (this is not necessary bc
