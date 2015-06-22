@@ -1,24 +1,19 @@
 /*
  * Van Mai Nguyen Thi <maya.nguyenthi@gmail.com>
- * 
  * Coding Theory: Test Program
  */
-
-// import java.util.Scanner;
-
 
 import java.util.*;
 
 class CTest {
-    
     public static void main(String args[]) {
-        // make generator
+        // generator matrix
         Matrix g = new Matrix(4, 8, new int[][] {{1,0,0,0,0,1,1,1},
                                                  {0,1,0,0,1,0,1,1},
                                                  {0,0,1,0,1,1,0,1},
                                                  {0,0,0,1,1,1,1,0}} );
         
-        // make parity check
+        // parity check matrix
         Matrix h = new Matrix(4, 8, new int[][] {{0,1,1,1,1,0,0,0},
                                                  {1,0,1,1,0,1,0,0},
                                                  {1,1,0,1,0,0,1,0},
@@ -55,6 +50,4 @@ class CTest {
         System.out.println("\nDecoded x2 = "+s.k+"x"+s.n+" vector:");
         s.show();
     }
-    
 }
-
